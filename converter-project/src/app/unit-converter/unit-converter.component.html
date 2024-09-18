@@ -1,0 +1,110 @@
+<div>
+  <h1>Unit Converter</h1>
+  <h2>Convert Units</h2>
+  <form (ngSubmit)="convert()">
+    <div>
+      <label for="value">Value:</label>
+      <input type="number" [(ngModel)]="value" name="value" />
+    </div>
+    <div>
+      <label for="fromUnit">From Unit:</label>
+      <select [(ngModel)]="fromUnit" name="fromUnit">
+        <option value="pounds">Pounds</option>
+        <option value="kilograms">Kilograms</option>
+        <option value="miles">Miles</option>
+        <option value="kilometers">Kilometers</option>
+      </select>
+    </div>
+    <div>
+      <label for="toUnit">To Unit:</label>
+      <select [(ngModel)]="toUnit" name="toUnit">
+        <option value="pounds">Pounds</option>
+        <option value="kilograms">Kilograms</option>
+        <option value="miles">Miles</option>
+        <option value="kilometers">Kilometers</option>
+      </select>
+    </div>
+    <button type="submit">Convert</button>
+  </form>
+
+   <!-- Display the error message if there is one -->
+   <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+  </div>
+
+  <!-- Display the conversion result -->
+  <div *ngIf="result">
+    <p>{{ result.original_value }} {{ result.original_unit }} is {{ result.converted_value }} {{ result.converted_unit }}</p>
+  </div>
+
+
+  <h2>Add or Subtract Units</h2>
+
+  <!-- Add form -->
+  <form (ngSubmit)="add()">
+    <div>
+      <label for="value1">Value 1:</label>
+      <input type="number" [(ngModel)]="value1" name="value1" />
+    </div>
+    <div>
+      <label for="unit1">Unit 1:</label>
+      <select [(ngModel)]="unit1" name="unit1">
+        <option value="pounds">Pounds</option>
+        <option value="kilograms">Kilograms</option>
+        <option value="miles">Miles</option>
+        <option value="kilometers">Kilometers</option>
+      </select>
+    </div>
+    <div>
+      <label for="value2">Value 2:</label>
+      <input type="number" [(ngModel)]="value2" name="value2" />
+    </div>
+    <div>
+      <label for="unit2">Unit 2:</label>
+      <select [(ngModel)]="unit2" name="unit2">
+        <option value="pounds">Pounds</option>
+        <option value="kilograms">Kilograms</option>
+        <option value="miles">Miles</option>
+        <option value="kilometers">Kilometers</option>
+      </select>
+    </div>
+    <div class="button-group">
+      <button type="submit" (click)="add()">Add</button>
+      <button type="button" (click)="subtract()">Subtract</button>
+    </div>
+  </form>
+
+  <!-- Subtract form -->
+  <form (ngSubmit)="subtract()">
+  </form>
+
+  <!-- Display operation result -->
+  <div *ngIf="operationResult">
+    <p>{{ operationResult.value1 }} {{ operationResult.unit1 }} 
+       <span *ngIf="currentOperation === 'add'">+</span>
+       <span *ngIf="currentOperation === 'subtract'">-</span> 
+       {{ operationResult.value2 }} {{ operationResult.unit2 }}
+    </p>
+    <p>Total in {{ operationResult.unit1 }}: 
+       <span *ngIf="currentOperation === 'add'">
+         {{ operationResult.total_value_in_unit1 }}
+       </span>
+       <span *ngIf="currentOperation === 'subtract'">
+         {{ operationResult.result_in_unit1 }}
+       </span>
+    </p>
+    <p>Total in {{ operationResult.unit2 }}: 
+       <span *ngIf="currentOperation === 'add'">
+         {{ operationResult.total_value_in_unit2 }}
+       </span>
+       <span *ngIf="currentOperation === 'subtract'">
+         {{ operationResult.result_in_unit2 }}
+       </span>
+    </p>
+  </div>
+
+  <!-- Display the operation error message if there is one -->
+  <div *ngIf="operationErrorMessage" class="error-message">
+    <p>{{ operationErrorMessage }}</p>
+  </div>
+</div>
