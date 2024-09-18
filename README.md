@@ -1,6 +1,6 @@
 # HOW TO RUN THE PROJECT
 
-1. Download the entire folder "mednet-coding-challege-2024" (zip).
+1. Download the entire folder "mednet-coding-challege-2024" (zip) and extract the file.
 
 2. Open the "converter-project" folder and the "converter-server" folder (in my case with VSCODE).
 
