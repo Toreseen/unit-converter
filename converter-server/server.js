@@ -110,7 +110,7 @@ app.post('/api/subtract', (req, res) => {
       value2,
       unit2,
       result_in_unit1: resultInUnit1,
-      result_in_unit2: resultInUnit2, // Add result_in_unit2
+      result_in_unit2: resultInUnit2,
     });
   } else {
     return res.status(400).json({ error: 'Conversion not supported for subtraction' });

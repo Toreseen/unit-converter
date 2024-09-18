@@ -27,6 +27,7 @@ export class UnitConverterComponent {
 
   constructor(private conversionService: ConversionService) { }
 
+  // Unit conversion method
   convert() {
     this.errorMessage = '';
     this.result = '';
@@ -37,6 +38,7 @@ export class UnitConverterComponent {
       });
   }
 
+  // Unit addition method
   add() {
     this.operationErrorMessage = '';  // Clear previous error message
     this.operationResult = '';        // Clear previous result
@@ -54,15 +56,16 @@ export class UnitConverterComponent {
         },
         error: (error) => {
           console.error('Addition API Error:', error);
-          this.operationErrorMessage = error;  // Display the error message
+          this.operationErrorMessage = error;
         }
       });
   }
   
+  // Unit subtraction method
   subtract() {
-    this.operationErrorMessage = '';  // Clear previous error message
-    this.operationResult = '';        // Clear previous result
-    this.currentOperation = 'subtract';  // Set the current operation to "subtract"
+    this.operationErrorMessage = '';       // Clear previous error message
+    this.operationResult = '';             // Clear previous result
+    this.currentOperation = 'subtract';    // Set the current operation to "subtract"
   
     this.conversionService.subtract(this.value1, this.unit1, this.value2, this.unit2)
       .subscribe({
@@ -76,7 +79,7 @@ export class UnitConverterComponent {
         },
         error: (error) => {
           console.error('Subtraction API Error:', error);
-          this.operationErrorMessage = error;  // Display the error message
+          this.operationErrorMessage = error;
         }
       });
   }
